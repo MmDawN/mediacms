@@ -33,3 +33,8 @@ CELERY_RESULT_BACKEND = BROKER_URL
 MP4HLS_COMMAND = "/home/mediacms.io/bento4/bin/mp4hls"
 
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
+
+REGISTER_ALLOWED = False
+USERS_CAN_SELF_REGISTER = False
+DO_NOT_TRANSCODE_VIDEO = True
+GLOBAL_LOGIN_REQUIRED = True

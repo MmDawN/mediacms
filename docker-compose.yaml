@@ -26,7 +26,7 @@ services:
     deploy:
       replicas: 1
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - ./:/home/mediacms.io/mediacms/
     environment:
@@ -34,6 +34,7 @@ services:
       ENABLE_CELERY_SHORT: 'no'
       ENABLE_CELERY_LONG: 'no'
       ENABLE_MIGRATIONS: 'no'
+      TZ: Asia/Shanghai  # 新增时区设置
     depends_on:
       - migrations
   celery_beat:
@@ -70,7 +71,7 @@ services:
       POSTGRES_USER: mediacms
       POSTGRES_PASSWORD: mediacms
       POSTGRES_DB: mediacms
-      TZ: Europe/London
+      TZ: Asia/Shanghai  # 修改为上海时区
     healthcheck:
       test: ["CMD-SHELL",  "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}", "--host=db", "--dbname=$POSTGRES_DB", "--username=$POSTGRES_USER"]
       interval: 10s
